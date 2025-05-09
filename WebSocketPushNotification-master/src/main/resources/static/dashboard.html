@@ -1,0 +1,67 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Chat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+
+<h2>Welcome, <span id="userDisplay"></span></h2>
+
+<div class="form-group">
+    <label>Send To (username):</label>
+    <input id="toUser" class="form-control mb-2">
+</div>
+
+<div class="form-group">
+    <label>Message:</label>
+    <input id="messageContent" class="form-control mb-2">
+</div>
+
+<button onclick="sendMessage()" class="btn btn-primary mb-4">Send</button>
+
+<h3>Messages:</h3>
+<ul id="messageList" class="list-group"></ul>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script>
+    let stompClient = null;
+    let username = localStorage.getItem('username');
+    document.getElementById('userDisplay').innerText = username;
+
+    function connect() {
+        let socket = new SockJS('/ws');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+
+            stompClient.subscribe('/topic/messages/' + username, function (message) {
+                let msg = JSON.parse(message.body);
+                showMessage(msg.fromUser + ": " + msg.content);
+            });
+        });
+    }
+
+    function sendMessage() {
+        let msg = {
+            fromUser: username,
+            toUser: document.getElementById('toUser').value,
+            content: document.getElementById('messageContent').value
+        };
+        stompClient.send("/app/chat.send", {}, JSON.stringify(msg));
+    }
+
+    function showMessage(message) {
+        let li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.innerText = message;
+        document.getElementById('messageList').appendChild(li);
+    }
+
+    connect();
+</script>
+
+</body>
+</html>
+ -->

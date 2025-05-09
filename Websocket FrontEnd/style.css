@@ -1,0 +1,45 @@
+/* style.css */
+
+/* Body Styling */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+/* Center the login form */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+/* Form styling */
+input.form-control {
+    margin-bottom: 15px;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 10px;
+}
+
+/* Chat message styling */
+#messageList {
+    max-height: 300px;
+    overflow-y: scroll;
+    margin-top: 20px;
+}
+
+/* Message list item */
+#messageList .list-group-item {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+}
+
+/* Display the user name */
+h2 span {
+    font-weight: bold;
+    color: #007bff;
+}
